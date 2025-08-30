@@ -17,15 +17,15 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3.6
-        
+          bundler-cache: true 
+  
       - name: Remove Gemfile.lock
         run: rm -f Gemfile.lock
         
-      - name: Install dependencies
+      - name: Install CocoaPods
         run: |
-          gem install bundler
-          bundle install
-          bundle exec pod install --project-directory=PostsApp
+          gem install cocoapods --no-document
+          pod install --project-directory=PostsApp
 
       - name: Lint
         run: bundle exec fastlane linting
