@@ -34,5 +34,5 @@ struct PostsView: View {
 }
 
 #Preview {
-    PostsView(viewModel: PostsViewModel())
+    PostsView(viewModel: PostsViewModel(service: PostsService()))
 }

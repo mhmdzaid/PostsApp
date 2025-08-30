@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 public enum NetworkError: Error {
-    case NoData
+    case noData
     case error(String)
 }
 
@@ -20,7 +20,7 @@ class PostsService: Service {
     func getPosts(completion: @escaping (Result<PostsResponse, NetworkError>) -> Void) {
         AF.request("https://jsonplaceholder.typicode.com/posts", method: .get).response { response in
             guard let data = response.data else {
-                completion(.failure(.NoData))
+                completion(.failure(.noData))
                 return
             }
             do {

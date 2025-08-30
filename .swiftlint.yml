@@ -1,0 +1,4 @@
+included:
+    - PostsApp/
+excluded:
+    - Pods
