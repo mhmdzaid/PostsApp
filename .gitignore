@@ -3,7 +3,6 @@
 ## Build generated
 build/
 DerivedData/
-Gemfile.lock
 vendor/
 ## Various settings
 ExportOptions.plist
