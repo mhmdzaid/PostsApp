@@ -25,7 +25,7 @@ jobs:
       - name: Install CocoaPods
         run: |
           gem install cocoapods --no-document
-          pod install --project-directory=PostsApp
+          bundle exec pod install
 
       - name: Lint
         run: bundle exec fastlane linting
