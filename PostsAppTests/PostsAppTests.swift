@@ -13,8 +13,7 @@ class PostsViewModelTests: XCTestCase {
     var viewModel: PostsViewModel?
 
     override func setUp() {
-        viewModel = PostsViewModel()
-        viewModel?.postsService = MockedPostsService()
+        viewModel = PostsViewModel(service: MockedPostsService())
     }
 
     func testGetPostsMethod() async throws {

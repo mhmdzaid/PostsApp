@@ -16,7 +16,7 @@ ExportOptions.plist
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
-
+.nx/
 ## Other
 *.moved-aside
 *.xccheckout

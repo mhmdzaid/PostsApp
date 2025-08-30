@@ -8,9 +8,13 @@
 import Foundation
 
 public class PostsViewModel: ObservableObject {
-    var postsService: Service = PostsService()
+    var postsService: Service!
     @Published var posts: PostsResponse = []
     @Published var contentState: ContentState = .empty
+
+    init(service: Service) {
+        self.postsService = service
+    }
 
     func getPosts() {
         contentState = .loading
