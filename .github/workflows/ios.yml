@@ -18,10 +18,7 @@ jobs:
         with:
           ruby-version: 3.3.6
           bundler-cache: true 
-  
-      - name: Remove Gemfile.lock
-        run: rm -f Gemfile.lock
-        
+
       - name: Install CocoaPods
         run: |
           gem install cocoapods --no-document
