@@ -6,8 +6,8 @@
 //
 
 import Foundation
-struct Post: Codable, Identifiable {
-    let userID, id: Int
+public struct Post: Codable, Identifiable {
+    public let userID, id: Int
     let title, body: String
 
     enum CodingKeys: String, CodingKey {
@@ -16,4 +16,4 @@ struct Post: Codable, Identifiable {
     }
 }
 
-typealias PostsResponse = [Post]
+public typealias PostsResponse = [Post]

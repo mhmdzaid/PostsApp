@@ -7,19 +7,19 @@
 
 import Foundation
 
-class PostsViewModel: ObservableObject {
+public class PostsViewModel: ObservableObject {
     var postsService: Service = PostsService()
     @Published var posts: PostsResponse = []
     @Published var contentState: ContentState = .empty
-  
+
     func getPosts() {
         contentState = .loading
         postsService.getPosts {[weak self] result in
-            switch result{
+            switch result {
             case .success(let returnedPosts):
                 self?.posts = returnedPosts
                 self?.contentState = .loaded
-                
+
             case .failure(let error):
                 self?.contentState = .error(error.localizedDescription)
                 print(error)
@@ -27,10 +27,9 @@ class PostsViewModel: ObservableObject {
         }
     }
 
-    
 }
 
-enum ContentState {
+enum ContentState: Equatable {
     case loading
     case loaded
     case error(String)

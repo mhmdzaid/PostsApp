@@ -1,0 +1,40 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:ios)
+
+platform :ios do
+
+  lane :linting do 
+      swiftlint
+  end
+
+  lane :build do
+     gym(skip_archive: true)
+  end
+
+  lane :test do
+    scan(
+    scheme: "PostsApp",
+    device: "iPhone 16 Pro (18.2)"
+  )
+  end
+
+  lane :all do
+    linting
+    build
+    test
+  end
+end

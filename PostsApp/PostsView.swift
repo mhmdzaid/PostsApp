@@ -21,10 +21,10 @@ struct PostsView: View {
                 List(viewModel.posts) { post in
                     Text(post.title)
                 }
-            case .error(_):
-                Text("something went wrong ...");
+            case .error:
+                Text("something went wrong ...")
             case .empty:
-                Text("sorry, no vailable posts right now ...");
+                Text("sorry, no vailable posts right now ...")
             }
         }
         .onAppear {
