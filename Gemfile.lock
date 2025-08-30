@@ -305,6 +305,7 @@ PLATFORMS
 DEPENDENCIES
   cocoapods (>= 1.13.0)
   fastlane
+  xcodeproj (>= 1.27.0)
 
 BUNDLED WITH
    2.5.22
