@@ -24,6 +24,8 @@ jobs:
 
       - name: Install CocoaPods
         run: |
+          gem install cocoapods --pre
+          gem install xcodeproj
           gem install cocoapods --no-document
           bundle exec pod install
 
