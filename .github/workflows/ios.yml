@@ -23,7 +23,7 @@ jobs:
           gem install bundler
           bundle install
           bundle exec pod install --project-directory=PostsApp
-
+          brew install swiftlint
       - name: Lint
         run: bundle exec fastlane linting
         
