@@ -28,7 +28,11 @@ jobs:
           gem install xcodeproj
           gem install cocoapods --no-document
           bundle exec pod install
-
+          
+      - name: Install swiftlint
+        run: | 
+          brew install swiftlint
+          
       - name: Lint
         run: bundle exec fastlane linting
         
