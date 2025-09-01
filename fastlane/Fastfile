@@ -22,7 +22,8 @@ platform :ios do
   end
 
   lane :build do
-     gym(skip_archive: true)
+     gym(skip_archive: true,
+	xcargs: "-allowProvisioningUpdates")
   end
 
   lane :test do
