@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
-
+import FeedFeature
 @main
 struct PostsAppApp: App {
     var body: some Scene {
         WindowGroup {
-            PostsView(viewModel: PostsViewModel())
+            PostsView(viewModel:
+                        PostsViewModel(postsService: PostsService())
+            )
         }
     }
 }

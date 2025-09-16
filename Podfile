@@ -8,6 +8,16 @@ target 'PostsApp' do
   # Pods for PostsApp
 
 	pod 'Alamofire'
+	pod 'SDWebImageSwiftUI'
 
+end
+
+target 'FeedFeature' do
+  use_frameworks!
+
+  # Pods for FeedFeature
+
+	pod 'Alamofire'
+	pod 'SDWebImageSwiftUI'
 
 end
