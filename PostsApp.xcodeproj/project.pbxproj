@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 60;
+	objectVersion = 71;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -83,7 +83,7 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		0B575FF02E6C37F200C00A60 /* Exceptions for "FeedFeature" folder in "FeedFeature" target */ = {
+		0B575FF02E6C37F200C00A60 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
@@ -96,40 +96,9 @@
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		0B575FB02E61CEB400C00A60 /* PostsAppTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = PostsAppTests;
-			sourceTree = "<group>";
-		};
-		0B575FD52E6C37EE00C00A60 /* FeedFeature */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				0B575FF02E6C37F200C00A60 /* Exceptions for "FeedFeature" folder in "FeedFeature" target */,
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = FeedFeature;
-			sourceTree = "<group>";
-		};
-		0B575FE32E6C37F100C00A60 /* FeedFeatureTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-			);
-			explicitFileTypes = {
-			};
-			explicitFolders = (
-			);
-			path = FeedFeatureTests;
-			sourceTree = "<group>";
-		};
+		0B575FB02E61CEB400C00A60 /* PostsAppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = PostsAppTests; sourceTree = "<group>"; };
+		0B575FD52E6C37EE00C00A60 /* FeedFeature */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (0B575FF02E6C37F200C00A60 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = FeedFeature; sourceTree = "<group>"; };
+		0B575FE32E6C37F100C00A60 /* FeedFeatureTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = FeedFeatureTests; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -587,7 +556,6 @@
 		};
 		0B575FEC2E6C37F200C00A60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DBD80DE65F5E5A3F8E946AC /* Pods-FeedFeature.debug.xcconfig */;
 			baseConfigurationReferenceAnchor = 0B575FD52E6C37EE00C00A60 /* FeedFeature */;
 			baseConfigurationReferenceRelativePath = dev.xcconfig;
 			buildSettings = {

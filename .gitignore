@@ -17,6 +17,7 @@ ExportOptions.plist
 xcuserdata/
 
 ## Other
+dev.xcconfig
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
