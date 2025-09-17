@@ -47,7 +47,6 @@ public class LoginService: LoginServiceProtocol {
                    encoding: JSONEncoding.default,
                    headers: config.headers).response { response in
 
-            print("response ..............\(String(data: response.data!, encoding: .utf8))")
             guard let data = response.data else {
                 completion(.failure(.noData))
                 return
@@ -56,7 +55,7 @@ public class LoginService: LoginServiceProtocol {
                 let loginResponse = try JSONDecoder().decode(T.self, from: data)
                 completion(.success(loginResponse))
             } catch let error {
-                //completion(.failure(.error(error.localizedDescription)))
+                completion(.failure(.error(error.localizedDescription)))
             }
         }
     }

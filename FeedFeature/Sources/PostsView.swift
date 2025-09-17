@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Core
 
 public struct PostsView: View {
     
@@ -33,22 +34,13 @@ public struct PostsView: View {
                     }
                 }
                 if viewModel.isLoadingMore {
-                    ProgressView("Loading...")
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .frame(width: 100, height: 100)
-                        .background(Color(.systemBackground).opacity(0.8))
-                        .cornerRadius(10)
-                        .shadow(radius: 5)
-                        .transition(.opacity)
+                    ProgressIndicatorView()
                 }
                 
                 switch viewModel.contentState {
                     
                 case .loading:
-                    ProgressView("Loading...")
-                        .progressViewStyle(CircularProgressViewStyle())
-                        .cornerRadius(10)
-                        .frame(width: 100, height: 100)
+                    ProgressIndicatorView()
                     
                 case .error:
                     Text("something went wrong ...")
