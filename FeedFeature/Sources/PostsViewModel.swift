@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Core
 
 public class PostsViewModel: ObservableObject {
     var postsService: Service = PostsService()
@@ -34,11 +35,4 @@ public class PostsViewModel: ObservableObject {
         }
     }
 
-}
-
-enum ContentState: Equatable {
-    case loading
-    case loaded
-    case error(String)
-    case empty
 }

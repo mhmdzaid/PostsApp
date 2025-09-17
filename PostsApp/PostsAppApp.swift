@@ -7,13 +7,12 @@
 
 import SwiftUI
 import FeedFeature
+import LoginFeature
 @main
 struct PostsAppApp: App {
     var body: some Scene {
         WindowGroup {
-            PostsView(viewModel:
-                        PostsViewModel(postsService: PostsService())
-            )
+            LoginView(viewModel: LoginViewModel(LoginService()))
         }
     }
 }

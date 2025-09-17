@@ -7,11 +7,7 @@
 
 import Foundation
 import Alamofire
-
-public enum NetworkError: Error {
-   case noData
-   case error(String)
-}
+import Core
 
 public protocol Service {
     func getPosts(page: Int, completion: @escaping (Result<[Article], NetworkError>) -> Void)

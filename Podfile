@@ -21,3 +21,10 @@ target 'FeedFeature' do
 	pod 'SDWebImageSwiftUI'
 
 end
+
+target 'LoginFeature' do
+  use_frameworks!
+ 	# Pods for LoginFeature
+	pod 'Alamofire'
+end
+ 
