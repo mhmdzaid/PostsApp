@@ -16,6 +16,7 @@ public struct PostsView: View {
     
     @ObservedObject var viewModel: PostsViewModel
     @State private var lastPostId: String? = nil
+    
     public var body: some View {
         NavigationStack {
             ZStack {

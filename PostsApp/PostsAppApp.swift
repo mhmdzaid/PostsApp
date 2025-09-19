@@ -12,7 +12,7 @@ import LoginFeature
 struct PostsAppApp: App {
     var body: some Scene {
         WindowGroup {
-            LoginView(viewModel: LoginViewModel(LoginService()))
+            AppDI.shared.makeLoginView()
         }
     }
 }

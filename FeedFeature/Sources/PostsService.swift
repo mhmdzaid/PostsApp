@@ -21,7 +21,7 @@ public class PostsService: Service {
         let API_KEY = bundle.object(forInfoDictionaryKey: "API_KEY") as? String
         //https://newsapi.org/v2/everything?sources=techcrunch&page=2&pageSize=10&apiKey=7ac2d2b17b574131a5d0a05bc59bd807
         let fullURL = "https://newsapi.org/v2/everything?sources=techcrunch&page=\(page)&pageSize=10&apiKey=\(API_KEY ?? "")"
-
+        print("full url: \(fullURL)")
         AF.request(fullURL, method: .get).response { response in
             
             guard let data = response.data else {
@@ -31,8 +31,9 @@ public class PostsService: Service {
             do {
                  let response = try JSONDecoder().decode(PostsResponse.self, from: data)
                 completion(.success(response.articles ?? []))
-
+                print("response is \(response)")
             } catch let error {
+                print("error is \(error)")
                 completion(.failure(.error(error.localizedDescription)))
             }
         }

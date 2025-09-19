@@ -13,6 +13,8 @@
 		0B46EC132E7AB921000052DC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B46EC092E7AB91F000052DC /* Core.framework */; };
 		0B46EC1E2E7AB921000052DC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B46EC092E7AB91F000052DC /* Core.framework */; };
 		0B46EC1F2E7AB921000052DC /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0B46EC092E7AB91F000052DC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0B46ECA52E7CDE31000052DC /* AppDI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B46ECA42E7CDE31000052DC /* AppDI.swift */; };
+		0B46ECA82E7CDEE9000052DC /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 0B46ECA72E7CDEE9000052DC /* Swinject */; };
 		0B575FDE2E6C37F100C00A60 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B575FD42E6C37EE00C00A60 /* FeedFeature.framework */; };
 		0B575FE92E6C37F100C00A60 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B575FD42E6C37EE00C00A60 /* FeedFeature.framework */; };
 		0B575FEA2E6C37F100C00A60 /* FeedFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0B575FD42E6C37EE00C00A60 /* FeedFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -119,6 +121,7 @@
 		0B46EBC82E7AB56B000052DC /* LoginFeatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoginFeatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B46EC092E7AB91F000052DC /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B46EC122E7AB921000052DC /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0B46ECA42E7CDE31000052DC /* AppDI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDI.swift; sourceTree = "<group>"; };
 		0B575FAF2E61CEB400C00A60 /* PostsAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PostsAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B575FD42E6C37EE00C00A60 /* FeedFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FeedFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B575FDD2E6C37F100C00A60 /* FeedFeatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FeedFeatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -274,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B46EBD42E7AB56B000052DC /* LoginFeature.framework in Frameworks */,
+				0B46ECA82E7CDEE9000052DC /* Swinject in Frameworks */,
 				0B575FE92E6C37F100C00A60 /* FeedFeature.framework in Frameworks */,
 				88D27463350579121DC72A6F /* Pods_PostsApp.framework in Frameworks */,
 				0B46EC1E2E7AB921000052DC /* Core.framework in Frameworks */,
@@ -346,6 +350,7 @@
 			children = (
 				0B46EB752E78C245000052DC /* Info.plist */,
 				FD1E5D092C5B9FC50062D2E7 /* PostsAppApp.swift */,
+				0B46ECA42E7CDE31000052DC /* AppDI.swift */,
 				FD1E5D0D2C5B9FC90062D2E7 /* Assets.xcassets */,
 				FD1E5D0F2C5B9FC90062D2E7 /* Preview Content */,
 			);
@@ -614,6 +619,9 @@
 				Base,
 			);
 			mainGroup = FD1E5CFD2C5B9FC50062D2E7;
+			packageReferences = (
+				0B46ECA62E7CDEE9000052DC /* XCRemoteSwiftPackageReference "Swinject" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FD1E5D072C5B9FC50062D2E7 /* Products */;
 			projectDirPath = "";
@@ -832,6 +840,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B46ECA52E7CDE31000052DC /* AppDI.swift in Sources */,
 				FD1E5D0A2C5B9FC50062D2E7 /* PostsAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1168,7 +1177,8 @@
 		};
 		0B575FEC2E6C37F200C00A60 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5DBD80DE65F5E5A3F8E946AC /* Pods-FeedFeature.debug.xcconfig */;
+			baseConfigurationReferenceAnchor = 0B575FD52E6C37EE00C00A60 /* FeedFeature */;
+			baseConfigurationReferenceRelativePath = dev.xcconfig;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1206,7 +1216,8 @@
 		};
 		0B575FED2E6C37F200C00A60 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B4C4E7C6F630D43CE9959865 /* Pods-FeedFeature.release.xcconfig */;
+			baseConfigurationReferenceAnchor = 0B575FD52E6C37EE00C00A60 /* FeedFeature */;
+			baseConfigurationReferenceRelativePath = dev.xcconfig;
 			buildSettings = {
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1554,6 +1565,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B46ECA62E7CDEE9000052DC /* XCRemoteSwiftPackageReference "Swinject" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Swinject/Swinject";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.10.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B46ECA72E7CDEE9000052DC /* Swinject */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B46ECA62E7CDEE9000052DC /* XCRemoteSwiftPackageReference "Swinject" */;
+			productName = Swinject;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FD1E5CFE2C5B9FC50062D2E7 /* Project object */;
 }
