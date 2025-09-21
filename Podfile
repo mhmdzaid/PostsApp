@@ -27,4 +27,10 @@ target 'LoginFeature' do
  	# Pods for LoginFeature
 	pod 'Alamofire'
 end
+
+target 'ProfileFeature' do
+  use_frameworks!
+ 	# Pods for ProfileFeature
+	pod 'SDWebImageSwiftUI'
+end
  

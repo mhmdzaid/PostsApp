@@ -44,15 +44,15 @@ public struct LoginView: View {
                         .frame(height: 50)
                         .background(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.cyan, lineWidth: 2)
+                                .stroke(Color(#colorLiteral(red: 0.1367000341, green: 0.6366661191, blue: 0.2845686078, alpha: 1)), lineWidth: 2)
                         )
                     
                     SecureField("Password", text: $viewModel.password)
                         .padding(20)
                         .frame(height: 50)
                         .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.cyan, lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color(#colorLiteral(red: 0.1367000341, green: 0.6366661191, blue: 0.2845686078, alpha: 1)), lineWidth: 2)
                         )
                     Button {
                         viewModel.login()
@@ -60,9 +60,9 @@ public struct LoginView: View {
                         Text("Login")
                             .font(.subheadline)
                             .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, minHeight: 50)
                     }
-                    .padding(20)
-                    .background(.cyan)
+                    .background(Color(#colorLiteral(red: 0.1367000341, green: 0.6366661191, blue: 0.2845686078, alpha: 1)))
                     .background(in: RoundedRectangle(cornerRadius: 15))
                     
                     

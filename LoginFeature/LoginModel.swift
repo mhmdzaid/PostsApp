@@ -8,14 +8,14 @@
 import Foundation
 
 public struct LoginResponse: Codable {
-    let id: Int
-    let username: String
-    let email: String
-    let firstName: String
-    let lastName: String
-    let gender: String
-    let image: URL
-    let accessToken: String
-    let refreshToken: String
+    public let id: Int
+    public let username: String
+    public let email: String
+    public let firstName: String
+    public let lastName: String
+    public let gender: String
+    public let image: URL
+    public let accessToken: String
+    public let refreshToken: String
 }
 

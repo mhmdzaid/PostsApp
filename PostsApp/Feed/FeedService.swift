@@ -18,8 +18,8 @@ public class FeedService: FeedServiceProtocol {
     public func fetchArticle(page: Int) async throws -> [ArticleModel] {
         print("current page from service ........ \(page)")
 
-        let bundle = Bundle(for: FeedViewModel.self)
-        let API_KEY = bundle.object(forInfoDictionaryKey: "API_KEY") as? String ?? ""
+        let API_KEY = Bundle.main.object(forInfoDictionaryKey: "API_KEY") as? String ?? ""
+        print("API_KEY from Info.plist: \(API_KEY)") // Debug print
         let fullURL = "https://newsapi.org/v2/everything?sources=techcrunch&page=\(page)&pageSize=10&apiKey=\(API_KEY)"
         print("full url: \(fullURL)")
         let dataTask = AF.request(fullURL, method: .get)
@@ -27,6 +27,7 @@ public class FeedService: FeedServiceProtocol {
         let response = await dataTask.response
         switch response.result {
         case .success(let feedsResponse):
+            print("response is \(feedsResponse)")
             return feedsResponse.articles ?? []
         case .failure(let error):
             throw NetworkError.error(error.localizedDescription)

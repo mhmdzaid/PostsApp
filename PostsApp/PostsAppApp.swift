@@ -15,10 +15,10 @@ struct PostsAppApp: App {
     var body: some Scene {
         WindowGroup {
             if(KeyChainHelper.shared.isLoggedIn) {
-                AppDI.shared.makeFeedView()
-                    .onAppear {
-                       _ = Reachability.shared // initializing Reachability
-                    }
+                AppDI.shared.constructHomeView()
+                .onAppear {
+                    _ = Reachability.shared // initializing Reachability
+                }
             } else {
                 AppDI.shared.makeLoginView()
             }
