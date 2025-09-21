@@ -8,12 +8,12 @@
 import XCTest
 @testable import PostsApp
 
-class PostsViewModelTests: XCTestCase {
+class FeedViewModelTests: XCTestCase {
 
-    var viewModel: PostsViewModel?
+    var viewModel: FeedViewModel?
 
     override func setUp() {
-        viewModel = PostsViewModel()
+        viewModel = FeedViewModel()
         viewModel?.postsService = MockedPostsService()
     }
 
@@ -28,7 +28,7 @@ class PostsViewModelTests: XCTestCase {
 }
 
 class MockedPostsService: Service {
-    func getPosts(completion: @escaping (Result<PostsApp.PostsResponse, PostsApp.NetworkError>) -> Void) {
+    func getPosts(completion: @escaping (Result<PostsApp.FeedResponse, PostsApp.NetworkError>) -> Void) {
         completion(.success([Post(userID: 123,
                                               id: 1,
                                               title: "Main Test header",

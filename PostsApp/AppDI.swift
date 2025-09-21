@@ -21,8 +21,8 @@ public class AppDI {
     }
     
     private func registerFeedFeature() {
-        container.register(PostsService.self) { _ in
-            PostsService()
+        container.register(FeedService.self) { _ in
+            FeedService()
         }
         
         container.register(FeedDataStore.self) { _ in
@@ -30,7 +30,7 @@ public class AppDI {
         }
         
         container.register(FeedRepo.self) { resolver in
-            FeedRepo(service: resolver.resolve(PostsService.self)!,
+            FeedRepo(service: resolver.resolve(FeedService.self)!,
                      cache: resolver.resolve(FeedDataStore.self)!)
         }
         
@@ -38,12 +38,12 @@ public class AppDI {
             FeedProvider(repo: resolver.resolve(FeedRepo.self)!)
         }
         
-        container.register(PostsViewModel.self) { resolver in
-            PostsViewModel(provider:  resolver.resolve(FeedProvider.self)!)
+        container.register(FeedViewModel.self) { resolver in
+            FeedViewModel(provider:  resolver.resolve(FeedProvider.self)!)
         }
         
-        container.register(PostsView.self) { resolver in
-            PostsView(viewModel: resolver.resolve(PostsViewModel.self)!)
+        container.register(FeedView.self) { resolver in
+            FeedView(viewModel: resolver.resolve(FeedViewModel.self)!)
         }
     }
     
@@ -81,8 +81,8 @@ public class AppDI {
         return container.resolve(LoginView.self)!
     }
     
-    public func makeFeedView() -> PostsView {
-        return container.resolve(PostsView.self)!
+    public func makeFeedView() -> FeedView {
+        return container.resolve(FeedView.self)!
     }
 }
 

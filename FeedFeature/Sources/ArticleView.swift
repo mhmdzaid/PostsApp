@@ -1,5 +1,5 @@
 //
-//  PostView.swift
+//  ArticleView.swift
 //  FeedFeature
 //
 //  Created by Mohamed Elmalhey on 06/09/2025.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct PostView: View {
+struct ArticleView: View {
     var post: ArticleModel!
     var body: some View {
         HStack {
@@ -25,7 +25,7 @@ struct PostView: View {
 }
 
 #Preview {
-    PostView(post: ArticleModel(source: Source(id: "123", name: "Wallmart"),
+    ArticleView(post: ArticleModel(source: Source(id: "123", name: "Wallmart"),
                            author: "John doe",
                            title: "Just preview",
                            description: "this is a description for preview only... ",

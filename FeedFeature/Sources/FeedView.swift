@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  FeedView.swift
 //  PostsApp
 //
 //  Created by Mohamed Elmalhey on 01/08/2024.
@@ -8,13 +8,13 @@
 import SwiftUI
 import Core
 
-public struct PostsView: View {
+public struct FeedView: View {
     
-    public init(viewModel: PostsViewModel) {
+    public init(viewModel: FeedViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     
-    @StateObject var viewModel: PostsViewModel
+    @StateObject var viewModel: FeedViewModel
     @State private var lastPostId: String? = nil
     
     public var body: some View {
@@ -22,9 +22,9 @@ public struct PostsView: View {
             ZStack {
                 List(viewModel.articles) { post in
                     NavigationLink {
-                        PostDetailsView(article: post)
+                        FeedDetailsView(article: post)
                     } label: {
-                        PostView(post: post)
+                        ArticleView(post: post)
                             .onAppear() {
                                 if post.id == viewModel.articles.last?.id {
                                     lastPostId = post.id
@@ -69,11 +69,11 @@ public struct PostsView: View {
     }
 }
 
-struct PostsView_Previews: FeedFeatureProvider {
+struct FeedView_Previews: FeedFeatureProvider {
     func getArticles(page: Int) async throws -> [ArticleModel] {
         return []
     }
 }
 #Preview {
-    PostsView(viewModel: PostsViewModel(provider: PostsView_Previews()))
+    FeedView(viewModel: FeedViewModel(provider: FeedView_Previews()))
 }

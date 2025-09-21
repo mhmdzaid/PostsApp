@@ -1,5 +1,5 @@
 //
-//  PostsViewModel.swift
+//  FeedViewModel.swift
 //  PostsApp
 //
 //  Created by Mohamed Elmalhey on 01/08/2024.
@@ -12,7 +12,7 @@ import Core
 public protocol FeedFeatureProvider {
     func getArticles(page: Int) async throws-> [ArticleModel]
 }
-public class PostsViewModel: ObservableObject {
+public class FeedViewModel: ObservableObject {
     var provider: FeedFeatureProvider
     var currentPage = 1;
     var isLoadingMore = false

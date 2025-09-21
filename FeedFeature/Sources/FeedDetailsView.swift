@@ -1,5 +1,5 @@
 //
-//  PostDetailsView.swift
+//  FeedDetailsView.swift
 //  FeedFeature
 //
 //  Created by Mohamed Elmalhey on 16/09/2025.
@@ -8,7 +8,7 @@
 import SwiftUI
 import SDWebImageSwiftUI
 
-struct PostDetailsView: View {
+struct FeedDetailsView: View {
     var article: ArticleModel?
     var body: some View {
         VStack(alignment: .leading){
@@ -27,7 +27,7 @@ struct PostDetailsView: View {
 }
 
 #Preview {
-    PostDetailsView(article: ArticleModel(source: Source(id: "123", name: "Wallmart"),
+    FeedDetailsView(article: ArticleModel(source: Source(id: "123", name: "Wallmart"),
                                      author: "John doe",
                                      title: "Just preview",
                                      description: "this is a description for preview only... ",

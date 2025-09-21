@@ -22,7 +22,7 @@
 		0BE3837C2E7F4D2800FA1610 /* FeedRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE3837B2E7F4D2800FA1610 /* FeedRepo.swift */; };
 		0BE3837F2E7F62B900FA1610 /* Feed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BE3837D2E7F62B900FA1610 /* Feed.xcdatamodeld */; };
 		0BE383812E7F65D500FA1610 /* FeedDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383802E7F65D500FA1610 /* FeedDataStore.swift */; };
-		0BE383822E7F6BFB00FA1610 /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383402E7CF55600FA1610 /* PostsService.swift */; };
+		0BE383822E7F6BFB00FA1610 /* FeedService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383402E7CF55600FA1610 /* FeedService.swift */; };
 		0BE383852E7F75BD00FA1610 /* FeedProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383842E7F75BD00FA1610 /* FeedProvider.swift */; };
 		88D27463350579121DC72A6F /* Pods_PostsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9059BF9DBCEA298B65F44B4 /* Pods_PostsApp.framework */; };
 		D207206DF09C928EB7A00E47 /* Pods_LoginFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902CD6AB8393CDC38994ADFF /* Pods_LoginFeature.framework */; };
@@ -134,7 +134,7 @@
 		0B5760292E6C463500C00A60 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5760812E6C490500C00A60 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5760862E6C4A2600C00A60 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0BE383402E7CF55600FA1610 /* PostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsService.swift; sourceTree = "<group>"; };
+		0BE383402E7CF55600FA1610 /* FeedService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedService.swift; sourceTree = "<group>"; };
 		0BE383792E7F3DB600FA1610 /* KeyChainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainHelper.swift; sourceTree = "<group>"; };
 		0BE3837B2E7F4D2800FA1610 /* FeedRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepo.swift; sourceTree = "<group>"; };
 		0BE3837E2E7F62B900FA1610 /* Feed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feed.xcdatamodel; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 		0BE383832E7F754F00FA1610 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				0BE383402E7CF55600FA1610 /* PostsService.swift */,
+				0BE383402E7CF55600FA1610 /* FeedService.swift */,
 				0BE3837B2E7F4D2800FA1610 /* FeedRepo.swift */,
 				0BE383802E7F65D500FA1610 /* FeedDataStore.swift */,
 				0BE383842E7F75BD00FA1610 /* FeedProvider.swift */,
@@ -868,7 +868,7 @@
 			files = (
 				0BE3837A2E7F3DB600FA1610 /* KeyChainHelper.swift in Sources */,
 				0B46ECA52E7CDE31000052DC /* AppDI.swift in Sources */,
-				0BE383822E7F6BFB00FA1610 /* PostsService.swift in Sources */,
+				0BE383822E7F6BFB00FA1610 /* FeedService.swift in Sources */,
 				0BE3837F2E7F62B900FA1610 /* Feed.xcdatamodeld in Sources */,
 				0BE383852E7F75BD00FA1610 /* FeedProvider.swift in Sources */,
 				FD1E5D0A2C5B9FC50062D2E7 /* PostsAppApp.swift in Sources */,
