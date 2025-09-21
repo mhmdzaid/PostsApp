@@ -9,28 +9,25 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct PostDetailsView: View {
-    var article: Article?
+    var article: ArticleModel?
     var body: some View {
         VStack(alignment: .leading){
             WebImage(url: URL(string: article?.urlToImage ?? ""), options: .fromCacheOnly)
                 .resizable()
                 .frame(height: UIScreen.main.bounds.height/2.5)
             Text(article?.title ?? "")
-                .font(.largeTitle)
-                .lineLimit(2)
+                .font(.title)
                 .truncationMode(.tail)
+                .padding(EdgeInsets(top: 20, leading: 15, bottom: 10, trailing: 15))
             Text(article?.description ?? "")
+                .padding(EdgeInsets(top: 0, leading: 15, bottom: 10, trailing: 15))
             Spacer()
         }
-        .padding(EdgeInsets(top: 20,
-                             leading: 20,
-                             bottom: 20,
-                            trailing: 20))
     }
 }
 
 #Preview {
-    PostDetailsView(article: Article(source: Source(id: "123", name: "Wallmart"),
+    PostDetailsView(article: ArticleModel(source: Source(id: "123", name: "Wallmart"),
                                      author: "John doe",
                                      title: "Just preview",
                                      description: "this is a description for preview only... ",

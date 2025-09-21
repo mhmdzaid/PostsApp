@@ -9,30 +9,38 @@ import Foundation
 import Combine
 import Core
 
+public protocol FeedFeatureProvider {
+    func getArticles(page: Int) async throws-> [ArticleModel]
+}
 public class PostsViewModel: ObservableObject {
-    var postsService: Service = PostsService()
-    @Published var posts: [Article] = []
-    @Published var contentState: ContentState = .empty
+    var provider: FeedFeatureProvider
     var currentPage = 1;
     var isLoadingMore = false
-    public init(postsService: Service) {
-        self.postsService = postsService
+    @Published var articles: [ArticleModel] = []
+    @Published var contentState: ContentState = .empty
+  
+    public init(provider: FeedFeatureProvider) {
+        self.provider = provider
     }
-    func getPosts() {
-        contentState = .loading
-        postsService.getPosts(page: currentPage) {[weak self] result in
-            switch result {
-            case .success(let returnedPosts):
-                self?.posts.append(contentsOf: returnedPosts)
-                self?.contentState = .loaded
-                self?.currentPage += 1
-                self?.isLoadingMore = false;
-                
-            case .failure(let error):
-                self?.contentState = .error(error.localizedDescription)
+    
+    func getPosts() async {
+        await MainActor.run {
+            contentState = .loading
+        }
+        do {
+            let newArticles = try await provider.getArticles(page: currentPage)
+            await MainActor.run {
+                articles.append(contentsOf: newArticles)
+                currentPage += 1
+                isLoadingMore = false
+                contentState = .loaded
+                print("current page from view model ........ \(currentPage)")
+            }
+        } catch let error {
+            await MainActor.run {
+                contentState = .error(error.localizedDescription)
                 print(error)
             }
         }
     }
-
 }

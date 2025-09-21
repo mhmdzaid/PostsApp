@@ -18,6 +18,12 @@
 		0B575FDE2E6C37F100C00A60 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B575FD42E6C37EE00C00A60 /* FeedFeature.framework */; };
 		0B575FE92E6C37F100C00A60 /* FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B575FD42E6C37EE00C00A60 /* FeedFeature.framework */; };
 		0B575FEA2E6C37F100C00A60 /* FeedFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0B575FD42E6C37EE00C00A60 /* FeedFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0BE3837A2E7F3DB600FA1610 /* KeyChainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383792E7F3DB600FA1610 /* KeyChainHelper.swift */; };
+		0BE3837C2E7F4D2800FA1610 /* FeedRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE3837B2E7F4D2800FA1610 /* FeedRepo.swift */; };
+		0BE3837F2E7F62B900FA1610 /* Feed.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0BE3837D2E7F62B900FA1610 /* Feed.xcdatamodeld */; };
+		0BE383812E7F65D500FA1610 /* FeedDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383802E7F65D500FA1610 /* FeedDataStore.swift */; };
+		0BE383822E7F6BFB00FA1610 /* PostsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383402E7CF55600FA1610 /* PostsService.swift */; };
+		0BE383852E7F75BD00FA1610 /* FeedProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383842E7F75BD00FA1610 /* FeedProvider.swift */; };
 		88D27463350579121DC72A6F /* Pods_PostsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9059BF9DBCEA298B65F44B4 /* Pods_PostsApp.framework */; };
 		D207206DF09C928EB7A00E47 /* Pods_LoginFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902CD6AB8393CDC38994ADFF /* Pods_LoginFeature.framework */; };
 		E2F181FF8185F8F24FB9A715 /* Pods_FeedFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CE98875483191910AFD5968 /* Pods_FeedFeature.framework */; };
@@ -128,6 +134,12 @@
 		0B5760292E6C463500C00A60 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5760812E6C490500C00A60 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B5760862E6C4A2600C00A60 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0BE383402E7CF55600FA1610 /* PostsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsService.swift; sourceTree = "<group>"; };
+		0BE383792E7F3DB600FA1610 /* KeyChainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainHelper.swift; sourceTree = "<group>"; };
+		0BE3837B2E7F4D2800FA1610 /* FeedRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedRepo.swift; sourceTree = "<group>"; };
+		0BE3837E2E7F62B900FA1610 /* Feed.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Feed.xcdatamodel; sourceTree = "<group>"; };
+		0BE383802E7F65D500FA1610 /* FeedDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDataStore.swift; sourceTree = "<group>"; };
+		0BE383842E7F75BD00FA1610 /* FeedProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedProvider.swift; sourceTree = "<group>"; };
 		45940F0DB46DFF148AF0689D /* Pods-PostsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsApp.debug.xcconfig"; path = "Target Support Files/Pods-PostsApp/Pods-PostsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5DBD80DE65F5E5A3F8E946AC /* Pods-FeedFeature.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedFeature.debug.xcconfig"; path = "Target Support Files/Pods-FeedFeature/Pods-FeedFeature.debug.xcconfig"; sourceTree = "<group>"; };
 		7CE98875483191910AFD5968 /* Pods_FeedFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -287,6 +299,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0BE383832E7F754F00FA1610 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				0BE383402E7CF55600FA1610 /* PostsService.swift */,
+				0BE3837B2E7F4D2800FA1610 /* FeedRepo.swift */,
+				0BE383802E7F65D500FA1610 /* FeedDataStore.swift */,
+				0BE383842E7F75BD00FA1610 /* FeedProvider.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		435D2EC62F32AEADB3C13285 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -348,9 +371,12 @@
 		FD1E5D082C5B9FC50062D2E7 /* PostsApp */ = {
 			isa = PBXGroup;
 			children = (
+				0BE383832E7F754F00FA1610 /* Feed */,
 				0B46EB752E78C245000052DC /* Info.plist */,
 				FD1E5D092C5B9FC50062D2E7 /* PostsAppApp.swift */,
+				0BE383792E7F3DB600FA1610 /* KeyChainHelper.swift */,
 				0B46ECA42E7CDE31000052DC /* AppDI.swift */,
+				0BE3837D2E7F62B900FA1610 /* Feed.xcdatamodeld */,
 				FD1E5D0D2C5B9FC90062D2E7 /* Assets.xcassets */,
 				FD1E5D0F2C5B9FC90062D2E7 /* Preview Content */,
 			);
@@ -840,8 +866,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BE3837A2E7F3DB600FA1610 /* KeyChainHelper.swift in Sources */,
 				0B46ECA52E7CDE31000052DC /* AppDI.swift in Sources */,
+				0BE383822E7F6BFB00FA1610 /* PostsService.swift in Sources */,
+				0BE3837F2E7F62B900FA1610 /* Feed.xcdatamodeld in Sources */,
+				0BE383852E7F75BD00FA1610 /* FeedProvider.swift in Sources */,
 				FD1E5D0A2C5B9FC50062D2E7 /* PostsAppApp.swift in Sources */,
+				0BE3837C2E7F4D2800FA1610 /* FeedRepo.swift in Sources */,
+				0BE383812E7F65D500FA1610 /* FeedDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1584,6 +1616,19 @@
 			productName = Swinject;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0BE3837D2E7F62B900FA1610 /* Feed.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0BE3837E2E7F62B900FA1610 /* Feed.xcdatamodel */,
+			);
+			currentVersion = 0BE3837E2E7F62B900FA1610 /* Feed.xcdatamodel */;
+			path = Feed.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FD1E5CFE2C5B9FC50062D2E7 /* Project object */;
 }

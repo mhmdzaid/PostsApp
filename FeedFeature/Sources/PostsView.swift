@@ -11,25 +11,27 @@ import Core
 public struct PostsView: View {
     
     public init(viewModel: PostsViewModel) {
-        self.viewModel = viewModel
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
-    @ObservedObject var viewModel: PostsViewModel
+    @StateObject var viewModel: PostsViewModel
     @State private var lastPostId: String? = nil
     
     public var body: some View {
         NavigationStack {
             ZStack {
-                List(viewModel.posts) { post in
+                List(viewModel.articles) { post in
                     NavigationLink {
                         PostDetailsView(article: post)
                     } label: {
                         PostView(post: post)
-                            .onAppear {
-                                if post.id == viewModel.posts.last?.id {
+                            .onAppear() {
+                                if post.id == viewModel.articles.last?.id {
                                     lastPostId = post.id
                                     viewModel.isLoadingMore = true
-                                    viewModel.getPosts()
+                                    Task {
+                                        await viewModel.getPosts()
+                                    }
                                 }
                             }
                     }
@@ -47,22 +49,31 @@ public struct PostsView: View {
                     Text("something went wrong ...")
                     
                 case .empty:
-                    Text("sorry, no vailable posts right now ...")
+                    Text("sorry, no available posts right now ...")
+                    
                 default:
                     EmptyView()
                 }
             }
             .onFirstAppear {
-                viewModel.getPosts()
+                Task {
+                    await viewModel.getPosts()
+                }
             }
             .toolbarTitleDisplayMode(.inlineLarge)
             .navigationTitle(Text(viewModel.contentState == .loaded ? "New feed" : ""))
         }
+        .navigationBarBackButtonHidden(true)
         
         
     }
 }
 
+struct PostsView_Previews: FeedFeatureProvider {
+    func getArticles(page: Int) async throws -> [ArticleModel] {
+        return []
+    }
+}
 #Preview {
-    PostsView(viewModel: PostsViewModel(postsService: PostsService()))
+    PostsView(viewModel: PostsViewModel(provider: PostsView_Previews()))
 }

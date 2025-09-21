@@ -17,9 +17,12 @@ public class LoginViewModel: ObservableObject, LoginViewModelProtocol {
     @Published var username: String = ""
     @Published var password: String = ""
     @Published var contentState: ContentState = .empty
+    var onLoginSuccess: ((LoginResponse) -> Void)
     
-    public init(_ service: LoginServiceProtocol) {
+    public init(_ service: LoginServiceProtocol,
+                onLoginSuccess: @escaping (LoginResponse) -> Void) {
         self.service = service
+        self.onLoginSuccess = onLoginSuccess
     }
     
     public func login() {
@@ -33,6 +36,7 @@ public class LoginViewModel: ObservableObject, LoginViewModelProtocol {
             case .success(let response):
                 print("Logged in user: \(response.username)")
                 self?.contentState = .loaded
+                self?.onLoginSuccess(response)
                 
             case .failure(let error):
                 self?.contentState = .error(error.localizedDescription)

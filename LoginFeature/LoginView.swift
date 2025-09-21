@@ -14,6 +14,7 @@ public struct LoginView: View {
     @State private var navigationPath = NavigationPath()
     @State private var isLoggedInSuccessfully = false
     var router: LoginRouter
+    var provider: LoginProvider
     private var errorMessage: String? {
         if case .error(let message) = viewModel.contentState {
             return message
@@ -21,15 +22,20 @@ public struct LoginView: View {
         return nil
     }
     
-    public init(viewModel: LoginViewModel, router: LoginRouter = DefaultLoginRouter()) {
-        self.viewModel = viewModel
-        self.router = router
+    public init(provider: LoginProvider) {
+        self.provider = provider
+        self.viewModel = provider.viewModel
+        self.router = provider.router
     }
     
     public var body: some View {
         NavigationStack(path: $navigationPath) {
             ZStack{
                 VStack(alignment: .center) {
+                    provider.loginViewImage
+                        .resizable()
+                        .frame(width: 200, height: 200)
+                        .padding(EdgeInsets(top: 50, leading: 30, bottom: 50, trailing: 30))
                     Text("Please Enter your credentials")
                         .font(.headline)
                     
@@ -95,5 +101,9 @@ public struct LoginView: View {
 }
 
 #Preview {
-    LoginView(viewModel: LoginViewModel.init(LoginService()))
+    LoginView(provider: LoginProvider(viewModel: LoginViewModel(LoginService(),
+                                                                onLoginSuccess: {_ in}),
+                                      router: DefaultLoginRouter(),
+                                      loginViewImage: Image("login_bg", bundle: .main),
+                                      onSuccessfullLogin: { _ in}))
 }

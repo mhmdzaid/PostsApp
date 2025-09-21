@@ -9,7 +9,7 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct PostView: View {
-    var post: Article!
+    var post: ArticleModel!
     var body: some View {
         HStack {
             WebImage(url: URL(string: post.urlToImage ?? ""))
@@ -25,7 +25,7 @@ struct PostView: View {
 }
 
 #Preview {
-    PostView(post: Article(source: Source(id: "123", name: "Wallmart"),
+    PostView(post: ArticleModel(source: Source(id: "123", name: "Wallmart"),
                            author: "John doe",
                            title: "Just preview",
                            description: "this is a description for preview only... ",

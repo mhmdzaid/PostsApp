@@ -10,23 +10,33 @@ import Foundation
 public struct PostsResponse: Codable {
     let status: String?
     let totalResults: Int?
-    let articles: [Article]?
+    public let articles: [ArticleModel]?
 }
 
-public struct Article: Codable, Identifiable {
+public struct ArticleModel: Codable, Identifiable {
     public let id: String = UUID().uuidString;
     
+   public init(source: Source?, author: String?, title: String?, description: String?, url: String?, urlToImage: String?, publishedAt: String?, content: String?) {
+        self.source = source
+        self.author = author
+        self.title = title
+        self.description = description
+        self.url = url
+        self.urlToImage = urlToImage
+        self.publishedAt = publishedAt
+        self.content = content
+    }
+    
     let source: Source?
-    let author: String?
-    let title: String?
-    let description: String?
-    let url: String?
-    let urlToImage: String?
-    let publishedAt: String?
-    let content: String?
+    public let author: String?
+    public let title: String?
+    public let description: String?
+    public let url: String?
+    public let urlToImage: String?
+    public let publishedAt: String?
+    public let content: String?
     
     enum CodingKeys: CodingKey {
-        case id
         case source
         case author
         case title
@@ -38,7 +48,7 @@ public struct Article: Codable, Identifiable {
     }
 }
 
-struct Source: Codable {
+public struct Source: Codable {
     let id: String?
     let name: String?
 }
