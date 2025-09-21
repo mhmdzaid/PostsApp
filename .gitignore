@@ -3,7 +3,6 @@
 ## Build generated
 build/
 DerivedData/
-Gemfile.lock
 vendor/
 ## Various settings
 ExportOptions.plist
@@ -18,6 +17,7 @@ ExportOptions.plist
 xcuserdata/
 
 ## Other
+dev.xcconfig
 *.moved-aside
 *.xccheckout
 *.xcscmblueprint
@@ -49,7 +49,8 @@ playground.xcworkspace
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
 #
-# Pods/
+/Pods/
+.nx/
 #
 # Add this line if you want to avoid checking in source code from the Xcode workspace
 # *.xcworkspace

@@ -6,12 +6,22 @@
 //
 
 import SwiftUI
+import FeedFeature
+import LoginFeature
+import Core
 
 @main
 struct PostsAppApp: App {
     var body: some Scene {
         WindowGroup {
-            PostsView(viewModel: PostsViewModel())
+            if(KeyChainHelper.shared.isLoggedIn) {
+                AppDI.shared.makeFeedView()
+                    .onAppear {
+                       _ = Reachability.shared // initializing Reachability
+                    }
+            } else {
+                AppDI.shared.makeLoginView()
+            }
         }
     }
 }

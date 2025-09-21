@@ -12,18 +12,27 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-
+   
+      - name: Select Xcode Version
+        run: sudo xcode-select -switch /Applications/Xcode_16.2.app/Contents/Developer
+      
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3.6
+          bundler-cache: true 
 
-      - name: Install dependencies
+      - name: Install CocoaPods
         run: |
-          gem install bundler
-          bundle install
-          bundle exec pod install --project-directory=PostsApp
+          gem install cocoapods --pre
+          gem install xcodeproj
+          gem install cocoapods --no-document
+          bundle exec pod install
+          
+      - name: Install swiftlint
+        run: | 
           brew install swiftlint
+          
       - name: Lint
         run: bundle exec fastlane linting
         
