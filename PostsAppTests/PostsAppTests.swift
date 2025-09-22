@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import PostsApp
+@testable import FeedFeature
 
 class FeedViewModelTests: XCTestCase {
 

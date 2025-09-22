@@ -83,9 +83,6 @@ public class AppDI {
         container.register(LoginService.self) { _ in
             LoginService()
         }
-        container.register(LoginRouter.self) { _ in
-            BaseLoginRouter()
-        }
         
         container.register(LoginViewModel.self) { resolver in
             LoginViewModel(resolver.resolve(LoginService.self)!,
@@ -93,12 +90,9 @@ public class AppDI {
                 KeyChainHelper.shared.saveUser(response)
             })
         }
-        container.register(BaseLoginRouter.self) { _ in
-            BaseLoginRouter()
-        }
+
         container.register(LoginProvider.self) { resolver in
             LoginProvider(viewModel: resolver.resolve(LoginViewModel.self)!,
-                          router: resolver.resolve(BaseLoginRouter.self)!,
                           loginViewImage: Image.init("tcFeed_ic"),
                           onSuccessfullLogin: { response in
                 KeyChainHelper.shared.saveUser(response)
@@ -140,10 +134,4 @@ struct BaseProfileRouter: ProfileRouter {
     
     public init(){}
     
-}
-struct BaseLoginRouter: LoginRouter {
-    public init() {}
-    public func navigateToOnSuccess() -> AnyView {
-        AnyView(AppDI.shared.constructHomeView())
-    }
 }

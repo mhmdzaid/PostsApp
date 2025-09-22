@@ -29,6 +29,7 @@
 		0BE383A32E806ADD00FA1610 /* ProfileFeature.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0BE3838F2E806ADC00FA1610 /* ProfileFeature.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0BE383F22E80714900FA1610 /* dev.xcconfig.example in Resources */ = {isa = PBXBuildFile; fileRef = 0BE383B92E806F7B00FA1610 /* dev.xcconfig.example */; };
 		0BE383F32E80714900FA1610 /* dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 0BE383B82E806F7B00FA1610 /* dev.xcconfig */; };
+		0BE383F92E80D77900FA1610 /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BE383F82E80D77900FA1610 /* RootView.swift */; };
 		3DD977615E99FD05FE480187 /* Pods_ProfileFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFD305F9C7FCA28C0FADFF61 /* Pods_ProfileFeature.framework */; };
 		88D27463350579121DC72A6F /* Pods_PostsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B9059BF9DBCEA298B65F44B4 /* Pods_PostsApp.framework */; };
 		D207206DF09C928EB7A00E47 /* Pods_LoginFeature.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 902CD6AB8393CDC38994ADFF /* Pods_LoginFeature.framework */; };
@@ -173,6 +174,7 @@
 		0BE383962E806ADD00FA1610 /* ProfileFeatureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProfileFeatureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BE383B82E806F7B00FA1610 /* dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = dev.xcconfig; sourceTree = "<group>"; };
 		0BE383B92E806F7B00FA1610 /* dev.xcconfig.example */ = {isa = PBXFileReference; lastKnownFileType = text; path = dev.xcconfig.example; sourceTree = "<group>"; };
+		0BE383F82E80D77900FA1610 /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		45940F0DB46DFF148AF0689D /* Pods-PostsApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PostsApp.debug.xcconfig"; path = "Target Support Files/Pods-PostsApp/Pods-PostsApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5DBD80DE65F5E5A3F8E946AC /* Pods-FeedFeature.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FeedFeature.debug.xcconfig"; path = "Target Support Files/Pods-FeedFeature/Pods-FeedFeature.debug.xcconfig"; sourceTree = "<group>"; };
 		7CE98875483191910AFD5968 /* Pods_FeedFeature.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FeedFeature.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -452,6 +454,7 @@
 				0BE383832E7F754F00FA1610 /* Feed */,
 				0B46EB752E78C245000052DC /* Info.plist */,
 				FD1E5D092C5B9FC50062D2E7 /* PostsAppApp.swift */,
+				0BE383F82E80D77900FA1610 /* RootView.swift */,
 				0BE383792E7F3DB600FA1610 /* KeyChainHelper.swift */,
 				0B46ECA42E7CDE31000052DC /* AppDI.swift */,
 				0BE3837D2E7F62B900FA1610 /* Feed.xcdatamodeld */,
@@ -1059,6 +1062,7 @@
 				0BE383822E7F6BFB00FA1610 /* FeedService.swift in Sources */,
 				0BE3837F2E7F62B900FA1610 /* Feed.xcdatamodeld in Sources */,
 				0BE383852E7F75BD00FA1610 /* FeedProvider.swift in Sources */,
+				0BE383F92E80D77900FA1610 /* RootView.swift in Sources */,
 				FD1E5D0A2C5B9FC50062D2E7 /* PostsAppApp.swift in Sources */,
 				0BE3837C2E7F4D2800FA1610 /* FeedRepo.swift in Sources */,
 				0BE383812E7F65D500FA1610 /* FeedDataStore.swift in Sources */,

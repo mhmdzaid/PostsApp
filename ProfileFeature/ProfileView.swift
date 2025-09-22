@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SDWebImageSwiftUI
+import Core
 
 public protocol ProfileRouter {
     func navigateOnLogout() -> AnyView
@@ -23,6 +24,8 @@ public struct ProfileView: View {
     var user: ProfileUser
     var onLogout: (() -> Void)?
     @State private var showLogoutAlert = false
+    @EnvironmentObject var appState: AppState
+    
     public init(user: ProfileUser, onLogout: (() -> Void)?) {
         self.user = user
         self.onLogout = onLogout
@@ -68,6 +71,7 @@ public struct ProfileView: View {
         .alert("Are you sure you want to logout?", isPresented: $showLogoutAlert) {
             Button("Yes", role: .destructive) {
                 onLogout?()
+                appState.root = .login
             }
             Button("No", role: .cancel) {}
         }

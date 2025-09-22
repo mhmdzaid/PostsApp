@@ -12,16 +12,15 @@ import Core
 
 @main
 struct PostsAppApp: App {
+    @StateObject var appState: AppState = AppState(root: .login)
+    
     var body: some Scene {
         WindowGroup {
-            if(KeyChainHelper.shared.isLoggedIn) {
-                AppDI.shared.constructHomeView()
+            RootView()
+                .environmentObject(appState)
                 .onAppear {
                     _ = Reachability.shared // initializing Reachability
                 }
-            } else {
-                AppDI.shared.makeLoginView()
-            }
         }
     }
 }

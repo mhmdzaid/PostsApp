@@ -13,7 +13,7 @@ public struct LoginView: View {
     @State var showAlert = false
     @State private var navigationPath = NavigationPath()
     @State private var isLoggedInSuccessfully = false
-    var router: LoginRouter
+    @EnvironmentObject var appState: AppState
     var provider: LoginProvider
     private var errorMessage: String? {
         if case .error(let message) = viewModel.contentState {
@@ -25,7 +25,6 @@ public struct LoginView: View {
     public init(provider: LoginProvider) {
         self.provider = provider
         self.viewModel = provider.viewModel
-        self.router = provider.router
     }
     
     public var body: some View {
@@ -72,9 +71,7 @@ public struct LoginView: View {
                 if viewModel.contentState == .loading {
                     ProgressIndicatorView()
                 }
-            }.navigationDestination(isPresented: $isLoggedInSuccessfully, destination: {
-                router.navigateToOnSuccess()
-            })
+            }
         }
         .navigationBarHidden(true)
         .onChange(of: viewModel.contentState) {
@@ -83,7 +80,7 @@ public struct LoginView: View {
             }
             
             if viewModel.contentState == .loaded {
-                isLoggedInSuccessfully = true
+                appState.root = .home
                 print("logged in successfully ....")
             }
             
@@ -103,7 +100,6 @@ public struct LoginView: View {
 #Preview {
     LoginView(provider: LoginProvider(viewModel: LoginViewModel(LoginService(),
                                                                 onLoginSuccess: {_ in}),
-                                      router: DefaultLoginRouter(),
                                       loginViewImage: Image("login_bg", bundle: .main),
                                       onSuccessfullLogin: { _ in}))
 }
