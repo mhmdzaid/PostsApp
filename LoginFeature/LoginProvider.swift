@@ -10,13 +10,10 @@ import SwiftUICore
 
 public struct LoginProvider {
     public init(viewModel: LoginViewModel,
-                loginViewImage: Image,
-                onSuccessfullLogin: @escaping (LoginResponse) -> Void) {
+                loginViewImage: Image) {
         self.viewModel = viewModel
         self.loginViewImage = loginViewImage
-        self.onSuccessfullLogin = onSuccessfullLogin
     }
     let viewModel: LoginViewModel
     let loginViewImage: Image
-    let onSuccessfullLogin: ((LoginResponse) -> Void)
 }

@@ -12,8 +12,13 @@ import Core
 
 @main
 struct PostsAppApp: App {
-    @StateObject var appState: AppState = AppState(root: .login)
+    @StateObject var appState: AppState
     
+    init() {
+        let root: Root = KeyChainHelper.shared.isLoggedIn ? .home : .login
+        _appState = StateObject(wrappedValue: AppState(root: root))
+    }
+
     var body: some Scene {
         WindowGroup {
             RootView()

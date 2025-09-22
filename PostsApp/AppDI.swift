@@ -93,10 +93,7 @@ public class AppDI {
 
         container.register(LoginProvider.self) { resolver in
             LoginProvider(viewModel: resolver.resolve(LoginViewModel.self)!,
-                          loginViewImage: Image.init("tcFeed_ic"),
-                          onSuccessfullLogin: { response in
-                KeyChainHelper.shared.saveUser(response)
-            })
+                          loginViewImage: Image.init("tcFeed_ic"))
         }
         container.register(LoginView.self) { resolver in
             LoginView(provider: resolver.resolve(LoginProvider.self)!)

@@ -100,6 +100,5 @@ public struct LoginView: View {
 #Preview {
     LoginView(provider: LoginProvider(viewModel: LoginViewModel(LoginService(),
                                                                 onLoginSuccess: {_ in}),
-                                      loginViewImage: Image("login_bg", bundle: .main),
-                                      onSuccessfullLogin: { _ in}))
+                                      loginViewImage: Image("login_bg", bundle: .main)))
 }
