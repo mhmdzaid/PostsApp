@@ -4,6 +4,8 @@
 
 LoginFeature is a modular SwiftUI component for user authentication. It encapsulates all login-related UI, state management, and networking logic, enabling easy integration and reuse across different parts of the application or in other projects.
 
+> **Note:** The LoginFeature currently uses a coupled dummy service for authentication, intended for learning and demonstration purposes. The service used is [https://dummyjson.com/docs/auth#auth-login](https://dummyjson.com/docs/auth#auth-login). In a production scenario, this service can be separated or replaced with another from the integrating app to enable real authentication and improve testability.
+
 ---
 
 ## Overview
