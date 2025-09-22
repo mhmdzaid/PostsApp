@@ -13,7 +13,7 @@ public struct LoginView: View {
     @State var showAlert = false
     @State private var navigationPath = NavigationPath()
     @State private var isLoggedInSuccessfully = false
-    var router: LoginRouter
+    @EnvironmentObject var appState: AppState
     var provider: LoginProvider
     private var errorMessage: String? {
         if case .error(let message) = viewModel.contentState {
@@ -25,7 +25,6 @@ public struct LoginView: View {
     public init(provider: LoginProvider) {
         self.provider = provider
         self.viewModel = provider.viewModel
-        self.router = provider.router
     }
     
     public var body: some View {
@@ -44,15 +43,15 @@ public struct LoginView: View {
                         .frame(height: 50)
                         .background(
                             RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.cyan, lineWidth: 2)
+                                .stroke(Color(#colorLiteral(red: 0.1367000341, green: 0.6366661191, blue: 0.2845686078, alpha: 1)), lineWidth: 2)
                         )
                     
                     SecureField("Password", text: $viewModel.password)
                         .padding(20)
                         .frame(height: 50)
                         .background(
-                            RoundedRectangle(cornerRadius: 10)
-                                .stroke(Color.cyan, lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 5)
+                                .stroke(Color(#colorLiteral(red: 0.1367000341, green: 0.6366661191, blue: 0.2845686078, alpha: 1)), lineWidth: 2)
                         )
                     Button {
                         viewModel.login()
@@ -60,9 +59,9 @@ public struct LoginView: View {
                         Text("Login")
                             .font(.subheadline)
                             .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, minHeight: 50)
                     }
-                    .padding(20)
-                    .background(.cyan)
+                    .background(Color(#colorLiteral(red: 0.1367000341, green: 0.6366661191, blue: 0.2845686078, alpha: 1)))
                     .background(in: RoundedRectangle(cornerRadius: 15))
                     
                     
@@ -72,9 +71,7 @@ public struct LoginView: View {
                 if viewModel.contentState == .loading {
                     ProgressIndicatorView()
                 }
-            }.navigationDestination(isPresented: $isLoggedInSuccessfully, destination: {
-                router.navigateToOnSuccess()
-            })
+            }
         }
         .navigationBarHidden(true)
         .onChange(of: viewModel.contentState) {
@@ -83,7 +80,7 @@ public struct LoginView: View {
             }
             
             if viewModel.contentState == .loaded {
-                isLoggedInSuccessfully = true
+                appState.root = .home
                 print("logged in successfully ....")
             }
             
@@ -103,7 +100,5 @@ public struct LoginView: View {
 #Preview {
     LoginView(provider: LoginProvider(viewModel: LoginViewModel(LoginService(),
                                                                 onLoginSuccess: {_ in}),
-                                      router: DefaultLoginRouter(),
-                                      loginViewImage: Image("login_bg", bundle: .main),
-                                      onSuccessfullLogin: { _ in}))
+                                      loginViewImage: Image("login_bg", bundle: .main)))
 }

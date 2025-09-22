@@ -9,6 +9,8 @@ import FeedFeature
 import LoginFeature
 import Swinject
 import SwiftUICore
+import ProfileFeature
+import SwiftUI
 
 public class AppDI {
     public static let shared = AppDI()
@@ -18,11 +20,41 @@ public class AppDI {
         self.container = Container()
         registerFeedFeature()
         registerLoginFeature()
+        registerProfileFeature()
     }
     
+    private func registerProfileFeature() {
+        container.register(ProfileView.self) { _ in
+            guard let loggedInUser = KeyChainHelper.shared.getUser() else {
+                // Provide a default ProfileUser if not logged in
+                return ProfileView(user: ProfileUser(
+                    username: "",
+                    email: "",
+                    firstName: "",
+                    lastName: "",
+                    image: URL(string: "https://example.com/default.png")!
+                )) {
+                    // logout action
+                    KeyChainHelper.shared.deleteUser()
+                }
+            }
+            
+            let profileUser = ProfileUser(
+                username: loggedInUser.username,
+                email: loggedInUser.email,
+                firstName: loggedInUser.firstName,
+                lastName: loggedInUser.lastName,
+                image: loggedInUser.image
+            )
+            return ProfileView(user: profileUser,
+                               onLogout: {
+                KeyChainHelper.shared.deleteUser()
+            })
+        }
+    }
     private func registerFeedFeature() {
-        container.register(PostsService.self) { _ in
-            PostsService()
+        container.register(FeedService.self) { _ in
+            FeedService()
         }
         
         container.register(FeedDataStore.self) { _ in
@@ -30,7 +62,7 @@ public class AppDI {
         }
         
         container.register(FeedRepo.self) { resolver in
-            FeedRepo(service: resolver.resolve(PostsService.self)!,
+            FeedRepo(service: resolver.resolve(FeedService.self)!,
                      cache: resolver.resolve(FeedDataStore.self)!)
         }
         
@@ -38,21 +70,18 @@ public class AppDI {
             FeedProvider(repo: resolver.resolve(FeedRepo.self)!)
         }
         
-        container.register(PostsViewModel.self) { resolver in
-            PostsViewModel(provider:  resolver.resolve(FeedProvider.self)!)
+        container.register(FeedViewModel.self) { resolver in
+            FeedViewModel(provider:  resolver.resolve(FeedProvider.self)!)
         }
         
-        container.register(PostsView.self) { resolver in
-            PostsView(viewModel: resolver.resolve(PostsViewModel.self)!)
+        container.register(FeedView.self) { resolver in
+            FeedView(viewModel: resolver.resolve(FeedViewModel.self)!)
         }
     }
     
     private func registerLoginFeature() {
         container.register(LoginService.self) { _ in
             LoginService()
-        }
-        container.register(LoginRouter.self) { _ in
-            BaseLoginRouter()
         }
         
         container.register(LoginViewModel.self) { resolver in
@@ -61,16 +90,10 @@ public class AppDI {
                 KeyChainHelper.shared.saveUser(response)
             })
         }
-        container.register(BaseLoginRouter.self) { _ in
-            BaseLoginRouter()
-        }
+
         container.register(LoginProvider.self) { resolver in
             LoginProvider(viewModel: resolver.resolve(LoginViewModel.self)!,
-                          router: resolver.resolve(BaseLoginRouter.self)!,
-                          loginViewImage: Image.init("tcFeed_ic"),
-                          onSuccessfullLogin: { response in
-                KeyChainHelper.shared.saveUser(response)
-            })
+                          loginViewImage: Image.init("tcFeed_ic"))
         }
         container.register(LoginView.self) { resolver in
             LoginView(provider: resolver.resolve(LoginProvider.self)!)
@@ -81,14 +104,31 @@ public class AppDI {
         return container.resolve(LoginView.self)!
     }
     
-    public func makeFeedView() -> PostsView {
-        return container.resolve(PostsView.self)!
+    public func makeFeedView() -> FeedView {
+        return container.resolve(FeedView.self)!
+    }
+    
+    public func makeProfileView() -> ProfileView {
+        return container.resolve(ProfileView.self)!
+    }
+    
+    public func constructHomeView() -> some View {
+        TabView {
+            Tab("Feed", systemImage: "list.bullet") {
+                AppDI.shared.makeFeedView()
+            }
+            Tab("Profile", systemImage: "person.circle") {
+                AppDI.shared.makeProfileView()
+            }
+        }
     }
 }
 
-struct BaseLoginRouter: LoginRouter {
-    public init() {}
-    public func navigateToOnSuccess() -> AnyView {
-        AnyView(AppDI.shared.makeFeedView())
+struct BaseProfileRouter: ProfileRouter {
+    func navigateOnLogout() -> AnyView {
+        AnyView(AppDI.shared.makeLoginView())
     }
+    
+    public init(){}
+    
 }

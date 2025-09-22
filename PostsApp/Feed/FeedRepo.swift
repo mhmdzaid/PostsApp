@@ -10,11 +10,11 @@ import FeedFeature
 import Core
 
 class FeedRepo {
-    let service: PostServiceProtocol
+    let service: FeedServiceProtocol
     let cache: FeedCacheProtocol
     var servicePage = 1
     
-    init(service: PostServiceProtocol, cache: FeedCacheProtocol) {
+    init(service: FeedServiceProtocol, cache: FeedCacheProtocol) {
         self.service = service
         self.cache = cache
     }

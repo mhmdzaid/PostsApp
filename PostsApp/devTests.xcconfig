@@ -1,0 +1,2 @@
+# Include CocoaPods settings for PostsApp target (Debug)
+#include "Pods/Target Support Files/Pods-PostsApp/Pods-PostsApp.debug.xcconfig"

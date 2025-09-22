@@ -1,5 +1,5 @@
 //
-//  PostModel.swift
+//  ArticleModel.swift
 //  PostsApp
 //
 //  Created by Mohamed Elmalhey on 03/08/2024.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct PostsResponse: Codable {
+public struct FeedResponse: Codable {
     let status: String?
     let totalResults: Int?
     public let articles: [ArticleModel]?
