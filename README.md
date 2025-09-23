@@ -11,8 +11,6 @@ A modular SwiftUI application demonstrating clean architecture, feature reusabil
 |--------------|-------------|---------------|
 | ![Login](screenshots/login.png) | ![Feed](screenshots/feed.png) | ![Profile](screenshots/profile.png) |
 
-*Place your screenshots in a `screenshots/` folder and update the paths above.*
-
 ---
 
 ## 📝 Project Description
