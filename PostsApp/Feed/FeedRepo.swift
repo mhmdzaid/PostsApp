@@ -22,7 +22,6 @@ class FeedRepo {
     func getCachedOfflineFeed() -> [ArticleModel] {
         let cachedArticles = cache.fetchArticles();
         return servicePage == 1 ? cachedArticles : []
-        
     }
     
     func getOnlineFeed() async throws -> [ArticleModel] {

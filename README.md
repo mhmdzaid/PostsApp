@@ -17,7 +17,7 @@ A modular SwiftUI application demonstrating clean architecture, feature reusabil
 
 ## 📝 Project Description
 
-PostsApp is a SwiftUI-based iOS application built with a modular architecture. Each feature (Login, Feed, Profile) is separated into its own module for maintainability and reusability. The Core module provides shared state, error handling, and utilities. The main app composes these modules and manages navigation and dependencies.
+PostsApp is a SwiftUI-based iOS application for browsing, reading, and managing articles. The app features a secure login flow, a feed of articles, and a user profile section. Users can authenticate, view a personalized feed, read article details, and manage their profile information. The app also supports offline mode, allowing users to view the last fetched page of articles even without an internet connection. It is built with a modular architecture, separating each feature into its own module for maintainability and reusability. The Core module provides shared state, error handling, and utilities, while the main app composes these modules and manages navigation and dependencies.
 
 ---
 
